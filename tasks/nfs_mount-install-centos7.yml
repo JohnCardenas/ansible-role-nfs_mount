@@ -1,0 +1,12 @@
+---
+- name: Install NFS Client
+  yum:
+    name: nfs-utils
+    state: present
+    update_cache: true
+
+- name: Ensure rpcbind is Running
+  service:
+    name: rpcbind
+    state: started
+    enabled: true

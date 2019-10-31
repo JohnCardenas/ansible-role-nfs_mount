@@ -1,0 +1,18 @@
+---
+# tasks file for nfs_mount
+- import_tasks: nfs_mount-check.yml
+  tags:
+    - check
+    - nfs_mount
+    - nfs_mount:check
+
+- import_tasks: nfs_mount-install-centos7.yml
+  when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
+  tags:
+    - nfs_mount
+    - nfs_mount:install
+
+- import_tasks: nfs_mount-mount.yml
+  tags:
+    - nfs_mount
+    - nfs_mount:mount

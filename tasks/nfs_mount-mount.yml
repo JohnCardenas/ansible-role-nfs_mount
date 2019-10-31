@@ -1,0 +1,13 @@
+---
+- name: Ensure Media Mount Point Exists
+  file:
+    path: "{{ nfs_mount.mount_point }}"
+    state: directory
+
+- name: Mount Media Folder
+  mount:
+    path: "{{ nfs_mount.mount_point }}"
+    src: "{{ nfs_mount.nfs_server }}:{{ nfs_mount.nfs_server_export }}"
+    fstype: nfs
+    opts: "{{ nfs_mount.mount_options }}"
+    state: mounted

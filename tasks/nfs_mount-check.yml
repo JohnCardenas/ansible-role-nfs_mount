@@ -1,0 +1,9 @@
+---
+- name: Check Required Variables
+  fail: msg="nfs_mount.{{ item }} is not defined"
+  when: item not in vars.nfs_mount
+  loop:
+    - mount_options
+    - mount_point
+    - nfs_server
+    - nfs_server_export
